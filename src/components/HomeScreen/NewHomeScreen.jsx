@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Paper, TextField, Box } from "@mui/material";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Typography } from "@material-ui/core";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getPostsAction, createPost } from "../../actions/post";
 import { getComment, createComment } from "../../actions/comment";
@@ -39,13 +39,11 @@ const NewHomeScreen = () => {
 
   const createCommentHandler = () => {
     dispatch(createComment(commentData));
-    setComment("");
   };
 
   const createPostHandler = () => {
     if (userInfo) {
       dispatch(createPost(quoteData));
-      setQuote("");
     }
   };
 
@@ -89,7 +87,7 @@ const NewHomeScreen = () => {
             </Box>
           </div>
           {isLoading ? (
-            "Loadeing"
+            "Loading"
           ) : (
             <div className={classes.quoteCardsConatiner}>
               {posts.length > 0 ? (
